@@ -1,9 +1,9 @@
 package org.shubham.archiver.util;
 
 import static java.time.Instant.now;
+import static java.util.Objects.nonNull;
 import static org.springframework.util.StringUtils.hasText;
 
-import io.micrometer.core.instrument.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.shubham.archiver.exception.ArchiverClientException;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUtils {
 
   public static boolean hasName(MultipartFile file) {
-    return StringUtils.isNotBlank(file.getOriginalFilename());
+    return nonNull(file) && hasText(file.getOriginalFilename());
   }
 
   /**

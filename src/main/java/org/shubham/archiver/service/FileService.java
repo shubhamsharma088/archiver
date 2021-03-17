@@ -43,7 +43,7 @@ public class FileService {
           .filter(FileUtils::hasName)
           .forEach(file -> addZipEntryToStream(zipOutputStream, file));
 
-    } catch (IOException e) {
+    } catch (Exception e) {
       log.error("Zip creation failed", e);
       throw new ArchiverServerException("Could not zip files.", e);
     }
